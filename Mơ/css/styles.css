@@ -1,0 +1,203 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* Container cuộn ngang */
+.scroll-container {
+  width: 100%;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  background: #000;
+  scroll-behavior: smooth;
+}
+
+/* Wrapper cho ảnh để đảm bảo kích thước đúng */
+.image-wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+}
+
+/* Ảnh bên trong - chỉ chế độ ôm trọn */
+.scroll-image {
+  height: 100vh;
+  width: auto;
+  max-width: none;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Ảnh hỏng - thích nghi với trang web */
+.scroll-image.error {
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  background: #111;
+}
+
+/* Thanh cuộn tùy chỉnh */
+.scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Hướng dẫn sử dụng */
+.instruction {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  z-index: 100;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.instruction.fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Controls nhạc */
+.music-controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  min-width: 200px;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.music-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.music-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.music-btn.active {
+  background: rgba(76, 175, 80, 0.8);
+}
+
+.volume-control {
+  width: 100px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+}
+
+.volume-control::-webkit-slider-thumb {
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+}
+
+.song-info {
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-label {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.file-label:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .instruction {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+  
+  .music-controls {
+    bottom: 10px;
+    right: 10px;
+    padding: 10px;
+    min-width: 150px;
+  }
+
+  .volume-control {
+    width: 80px;
+  }
+
+  .music-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}

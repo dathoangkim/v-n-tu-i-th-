@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xem ảnh ngang</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="instruction" id="instruction">
+    Chào mừng đến vườn tuổi thơ - Nhấn Play để bật nhạc
+  </div>
+
+  <!-- Controls nhạc -->
+  <div class="music-controls">
+    <div class="control-row">
+      <button class="music-btn" id="playPauseBtn">▶️ Play</button>
+      <input type="range" class="volume-control" id="volumeControl" min="0" max="100" value="50">
+    </div>
+    <div class="song-info" id="songInfo">Sẵn sàng phát nhạc</div>
+    <input type="file" class="file-input" id="fileInput" accept="audio/*">
+    <label for="fileInput" class="file-label">📁 Chọn file nhạc</label>
+  </div>
+
+  <div class="scroll-container" id="scrollContainer">
+    <div class="image-wrapper">
+      <img src="../images/nền.jpg" alt="Ảnh nền" class="scroll-image" id="mainImage" onerror="this.src='../images/error.jpg'">
+    </div>
+  </div>
+
+  <!-- Audio element -->
+  <audio id="backgroundMusic" loop preload="none"></audio>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
